@@ -20,3 +20,9 @@
   notify:
     - Restart nginx
     - Validate nginx
+
+- name: Copy nginx configuration file.
+  copy:
+    dest: "{{ nginx_file_nginx_conf_dest }}"
+    src: "{{ nginx_file_nginx_conf }}"
+  notify: Restart nginx

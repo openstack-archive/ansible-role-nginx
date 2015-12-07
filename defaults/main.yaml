@@ -13,3 +13,6 @@
 # under the License.
 ---
 nginx_config_include_files: []
+
+nginx_file_nginx_conf: etc/nginx/nginx.conf
+nginx_file_nginx_conf_dest: /etc/nginx/nginx.conf
