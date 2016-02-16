@@ -12,17 +12,31 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-- name: Copy nginx custom configuration files.
-  copy:
-    dest: "{{ nginx_config_include_dir }}"
-    force: true
-    src: "{{ nginx_config_include_files }}"
-  notify:
-    - Restart nginx
-    - Validate nginx
-
 - name: Copy nginx configuration file.
   copy:
     dest: "{{ nginx_file_nginx_conf_dest }}"
     src: "{{ nginx_file_nginx_conf_src }}"
-  notify: Restart nginx
+  notify:
+    - Validate nginx
+    - Restart nginx
+
+- name: Create custom configuration directory.
+  become: yes
+  file:
+    dest: "{{ nginx_file_include_dir_dest }}"
+    group: "{{ nginx_file_include_dir_group }}"
+    mode: "{{ nginx_file_include_dir_mode }}"
+    owner: "{{ nginx_file_include_dir_owner }}"
+    state: directory
+
+- name: Rsync nginx configuration.
+  become: no
+  synchronize:
+    delete: yes
+    dest: "{{ nginx_file_include_dir_dest }}"
+    perms: yes
+    src: "{{ nginx_file_include_dir_src }}"
+  when: nginx_file_include_dir_src != ""
+  notify:
+    - Validate nginx
+    - Restart nginx
