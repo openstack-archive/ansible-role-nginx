@@ -24,5 +24,5 @@
 - name: Copy nginx configuration file.
   copy:
     dest: "{{ nginx_file_nginx_conf_dest }}"
-    src: "{{ nginx_file_nginx_conf }}"
+    src: "{{ nginx_file_nginx_conf_src }}"
   notify: Restart nginx
