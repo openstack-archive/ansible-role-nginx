@@ -12,10 +12,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-- name: Define nginx_config_include_dir
-  set_fact:
-    nginx_config_include_dir: "{{ __nginx_config_include_dir }}"
-  when: nginx_config_include_dir is not defined
-
-- include: install/redhat.yaml
-  when: ansible_os_family == 'RedHat'
+- name: Install nginx package.
+  package:
+    name: "{{ nginx_package_name }}"
+    state: installed
