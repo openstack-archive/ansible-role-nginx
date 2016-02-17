@@ -16,6 +16,7 @@
   copy:
     dest: "{{ nginx_file_nginx_conf_dest }}"
     src: "{{ nginx_file_nginx_conf_src }}"
+  when: nginx_file_nginx_conf_src != ""
   notify:
     - Validate nginx
     - Restart nginx

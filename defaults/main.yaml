@@ -19,4 +19,4 @@ nginx_file_include_dir_owner: "{{ ansible_user }}"
 nginx_file_include_dir_src: ""
 
 nginx_file_nginx_conf_dest: /etc/nginx/nginx.conf
-nginx_file_nginx_conf_src: etc/nginx/nginx.conf
+nginx_file_nginx_conf_src: ""
