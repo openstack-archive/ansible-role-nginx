@@ -20,3 +20,5 @@ nginx_file_include_dir_src: ""
 
 nginx_file_nginx_conf_dest: /etc/nginx/nginx.conf
 nginx_file_nginx_conf_src: ""
+
+nginx_package_name: nginx

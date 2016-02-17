@@ -12,13 +12,4 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-# NOTE(pabelanger): This needs to be here for now, since we need python-pip.
-- name: Ensure EPEL is enabled.
-  yum:
-    pkg: epel-release
-    state: installed
 
-- name: Install nginx using yum.
-  yum:
-    pkg: nginx
-    state: installed
