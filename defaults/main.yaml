@@ -12,10 +12,10 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-nginx_file_include_dir_dest: /etc/nginx/conf.d
-nginx_file_include_dir_group: "{{ ansible_user }}"
-nginx_file_include_dir_mode: "0755"
-nginx_file_include_dir_owner: "{{ ansible_user }}"
+nginx_file_include_dir_dest: /etc/nginx/conf.d/
+nginx_file_include_dir_group: root
+nginx_file_include_dir_mode: 0755
+nginx_file_include_dir_owner: root
 nginx_file_include_dir_src: ""
 
 nginx_file_nginx_conf_dest: /etc/nginx/nginx.conf
