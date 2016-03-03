@@ -25,3 +25,18 @@
 
   roles:
     - "{{ rolename }}"
+
+  post_tasks:
+    - name: Register /etc/nginx/conf.d
+      stat:
+        path: /etc/nginx/conf.d
+      register: nginx_confd_stat
+
+    - name: Assert nginx_confd_stat tests.
+      assert:
+        that:
+          - nginx_confd_stat.stat.exists
+          - nginx_confd_stat.stat.isdir
+          - nginx_confd_stat.stat.pw_name == 'root'
+          - nginx_confd_stat.stat.gr_name == 'root'
+          - nginx_confd_stat.stat.mode == '0755'
