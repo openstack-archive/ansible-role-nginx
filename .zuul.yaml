@@ -1,0 +1,43 @@
+- job:
+    name: ansible-role-nginx-base
+    run: tests/playbooks/run.yaml
+    roles:
+      - zuul: openstack/ansible-role-nginx
+
+- job:
+    name: ansible-role-nginx
+    parent: ansible-role-nginx-base
+
+- job:
+    name: ansible-role-nginx-fedora-27
+    parent: ansible-role-nginx
+    nodeset: fedora-27
+
+- job:
+    name: ansible-role-nginx-ubuntu-bionic
+    parent: ansible-role-nginx
+    nodeset: ubuntu-bionic
+
+- job:
+    name: ansible-role-nginx-ubuntu-xenial
+    parent: ansible-role-nginx
+    nodeset: ubuntu-xenial
+
+- project:
+    name: openstack/ansible-role-nginx
+    templates:
+      - windmill-jobs-fedora-27
+      - windmill-jobs-bionic
+      - windmill-jobs-xenial
+    check:
+      jobs:
+        - ansible-role-nginx-fedora-27
+        - ansible-role-nginx-ubuntu-bionic
+        - ansible-role-nginx-ubuntu-xenial
+        - tox-linters
+    gate:
+      jobs:
+        - ansible-role-nginx-fedora-27
+        - ansible-role-nginx-ubuntu-bionic
+        - ansible-role-nginx-ubuntu-xenial
+        - tox-linters

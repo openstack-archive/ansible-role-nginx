@@ -1,4 +1,4 @@
-# Copyright 2015 Red Hat, Inc.
+# Copyright 2018 Red Hat, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,16 +12,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-- hosts: localhost
+- hosts: all
   vars:
-    rolename: "{{ lookup('pipe', 'pwd') | dirname | basename }}"
-  pre_tasks:
-    # Make sure OS does not have a stale package cache.
-    - name: Update apt cache.
-      become: yes
-      apt:
-        update_cache: yes
-      when: ansible_os_family == 'Debian'
+    rolename: ansible-role-nginx
 
   roles:
     - "{{ rolename }}"
