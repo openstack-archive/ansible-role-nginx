@@ -16,7 +16,7 @@
   copy:
     dest: "{{ nginx_file_nginx_conf_dest }}"
     src: "{{ nginx_file_nginx_conf_src }}"
-  when: nginx_file_nginx_conf_src != ""
+  when: nginx_file_nginx_conf_src
   notify:
     - Validate nginx
     - Restart nginx
@@ -28,7 +28,7 @@
     mode: "{{ nginx_file_include_dir_mode }}"
     owner: "{{ nginx_file_include_dir_owner }}"
     src: "{{ nginx_file_include_dir_src }}"
-  when: nginx_file_include_dir_src != ""
+  when: nginx_file_include_dir_src
   notify:
     - Validate nginx
     - Restart nginx
