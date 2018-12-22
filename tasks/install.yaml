@@ -12,7 +12,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-- name: Install nginx package.
+- name: Install nginx from package
   package:
     name: "{{ nginx_package_name }}"
-    state: installed
+    state: present
