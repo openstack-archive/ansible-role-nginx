@@ -1,0 +1,8 @@
+Code-Review+2: Paul Belanger <pabelanger@redhat.com>
+Workflow+1: Paul Belanger <pabelanger@redhat.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Sun, 31 Mar 2019 03:27:02 +0000
+Reviewed-on: https://review.openstack.org/648848
+Project: openstack/ansible-role-nginx
+Branch: refs/heads/master
