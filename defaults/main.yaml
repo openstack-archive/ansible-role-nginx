@@ -18,14 +18,10 @@ nginx_task_manager:
   - config
   - service
 
-nginx_file_include_dir_dest: /etc/nginx/conf.d/
-nginx_file_include_dir_group: root
-nginx_file_include_dir_mode: 0755
-nginx_file_include_dir_owner: root
-nginx_file_include_dir_src: ""
-
-nginx_file_nginx_conf_dest: /etc/nginx/nginx.conf
-nginx_file_nginx_conf_src: ""
+nginx_file_nginx_config_group: root
+nginx_file_nginx_config_mode: 0644
+nginx_file_nginx_config_owner: root
+nginx_file_nginx_config: []
 
 nginx_package_name: nginx
 

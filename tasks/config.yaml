@@ -12,23 +12,13 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-- name: Copy nginx configuration file
+- name: Install nginx configuration files
   become: true
-  copy:
-    dest: "{{ nginx_file_nginx_conf_dest }}"
-    src: "{{ nginx_file_nginx_conf_src }}"
-  when: nginx_file_nginx_conf_src
-  notify:
-    - Restart nginx
-
-- name: Copy nginx custom configuration
-  become: true
-  copy:
-    dest: "{{ nginx_file_include_dir_dest }}"
-    group: "{{ nginx_file_include_dir_group }}"
-    mode: "{{ nginx_file_include_dir_mode }}"
-    owner: "{{ nginx_file_include_dir_owner }}"
-    src: "{{ nginx_file_include_dir_src }}"
-  when: nginx_file_include_dir_src
-  notify:
-    - Restart nginx
+  template:
+    dest: "{{ item.dest }}"
+    group: "{{ nginx_file_nginx_config_group }}"
+    mode: "{{ nginx_file_nginx_config_mode }}"
+    owner: "{{ nginx_file_nginx_config_owner }}"
+    src: "{{ item.src }}"
+  notify: Reload nginx
+  with_items: "{{ nginx_file_nginx_config }}"
