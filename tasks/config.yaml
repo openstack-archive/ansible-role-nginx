@@ -12,7 +12,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-- name: Copy nginx configuration file.
+- name: Copy nginx configuration file
+  become: true
   copy:
     dest: "{{ nginx_file_nginx_conf_dest }}"
     src: "{{ nginx_file_nginx_conf_src }}"
@@ -21,7 +22,8 @@
     - Validate nginx
     - Restart nginx
 
-- name: Copy nginx custom configuration.
+- name: Copy nginx custom configuration
+  become: true
   copy:
     dest: "{{ nginx_file_include_dir_dest }}"
     group: "{{ nginx_file_include_dir_group }}"

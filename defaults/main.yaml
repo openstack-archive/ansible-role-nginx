@@ -12,6 +12,12 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
+# tasks/main.yaml
+nginx_task_manager:
+  - install
+  - config
+  - service
+
 nginx_file_include_dir_dest: /etc/nginx/conf.d/
 nginx_file_include_dir_group: root
 nginx_file_include_dir_mode: 0755

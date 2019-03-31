@@ -12,7 +12,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-- name: Enable nginx service.
+- name: Enable nginx service
+  become: true
   service:
     enabled: yes
     name: nginx
