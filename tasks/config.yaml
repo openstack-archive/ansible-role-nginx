@@ -32,3 +32,13 @@
   when: nginx_file_include_dir_src
   notify:
     - Restart nginx
+
+- name: Install sites-available files
+  become: true
+  synchronize:
+    delete: true
+    dest: "{{ nginx_file_sites_available_dest }}"
+    perms: true
+    recursive: true
+    src: "{{ nginx_file_sites_available_src }}"
+  when: nginx_file_sites_available_src is not none
