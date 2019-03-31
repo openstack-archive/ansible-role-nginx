@@ -32,3 +32,13 @@
   when: nginx_file_include_dir_src
   notify:
     - Restart nginx
+
+- name: Install nginx configuration files
+  become: true
+  template:
+    dest: "{{ item.dest }}"
+    group: "{{ nginx_file_nginx_config_group }}"
+    mode: "{{ nginx_file_nginx_config_mode }}"
+    owner: "{{ nginx_file_nginx_config_owner }}"
+    src: "{{ item.src }}"
+  with_items: "{{ nginx_file_nginx_config }}"

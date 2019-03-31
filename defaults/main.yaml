@@ -27,6 +27,11 @@ nginx_file_include_dir_src: ""
 nginx_file_nginx_conf_dest: /etc/nginx/nginx.conf
 nginx_file_nginx_conf_src: ""
 
+nginx_file_nginx_config_group: root
+nginx_file_nginx_config_mode: 0644
+nginx_file_nginx_config_owner: root
+nginx_file_nginx_config: []
+
 nginx_package_name: nginx
 
 nginx_service_nginx_daemon_reload: true
