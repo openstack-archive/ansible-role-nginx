@@ -14,8 +14,20 @@
 ---
 - name: Enable nginx service
   become: true
-  service:
-    enabled: yes
-    name: nginx
-  notify:
-    - Restart nginx
+  systemd:
+    daemon_reload: "{{ nginx_service_nginx_daemon_reload }}"
+    enabled: "{{ nginx_service_nginx_enabled }}"
+    name: "{{ nginx_service_nginx_name }}"
+  register: nginx_service_nginx
+  when: nginx_service_nginx_manage
+
+- name: Set nginx service state
+  become: true
+  systemd:
+    daemon_reload: "{{ nginx_service_nginx_daemon_reload }}"
+    name: "{{ nginx_service_nginx_name }}"
+    state: "{{ nginx_service_nginx_state }}"
+  register: nginx_service_nginx_state_info
+  when:
+    - nginx_service_nginx_manage
+    - nginx_service_nginx_state in ['reloaded', 'restarted', 'started', 'stopped']

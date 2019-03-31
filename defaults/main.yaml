@@ -28,3 +28,9 @@ nginx_file_nginx_conf_dest: /etc/nginx/nginx.conf
 nginx_file_nginx_conf_src: ""
 
 nginx_package_name: nginx
+
+nginx_service_nginx_daemon_reload: true
+nginx_service_nginx_enabled: true
+nginx_service_nginx_manage: true
+nginx_service_nginx_name: nginx
+nginx_service_nginx_state: started
